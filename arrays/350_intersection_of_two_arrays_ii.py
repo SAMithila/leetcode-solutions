@@ -145,7 +145,7 @@ def intersect_defaultdict(nums1: List[int], nums2: List[int]) -> List[int]:
             freq[num] -= 1
     return result
 
-
+'''
 # ──────────────────────────────────────────────────────
 # Approach 6 : Sorting + Binary Search
 # ──────────────────────────────────────────────────────
@@ -188,7 +188,7 @@ def intersect_bucket(nums1: List[int], nums2: List[int]) -> List[int]:
             result.append(num)
             freq[num] -= 1
     return result
-
+'''
 
 # ──────────────────────────────────────────────────────
 # ★ Quick comparison summary
@@ -224,8 +224,8 @@ if __name__ == "__main__":
         ("3. Hash Map (smaller)",  intersect_hashmap),
         ("4. Counter &",           intersect_counter),
         ("5. defaultdict",         intersect_defaultdict),
-        ("6. Sort + Bisect",       intersect_binary_search),
-        ("7. Bucket Array",        intersect_bucket),
+     #  ("6. Sort + Bisect",       intersect_binary_search),
+     #  ("7. Bucket Array",        intersect_bucket),
     ]
 
     for nums1, nums2, expected in test_cases:
