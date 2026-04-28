@@ -200,7 +200,7 @@ if __name__ == "__main__":
         ("4. set.intersection()",  intersection_set_method),
      #  ("5. Sort + Two Ptrs",     intersection_two_pointers),
      #  ("6. Sort + Binary Search",intersection_binary_search),
-     #  ("7. Filter + Set",        intersection_filter),
+     #  git add ("7. Filter + Set",        intersection_filter),
      #  ("8. Set Comprehension",   intersection_comprehension),
     ]
 
