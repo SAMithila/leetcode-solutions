@@ -55,7 +55,7 @@ def productExceptSelf_brute_force(nums: List[int]) -> List[int]:
         result.append(product)
     return result
 
-
+'''
 # ──────────────────────────────────────────────────────
 # Approach 2 : Division  (violates problem constraint)
 # ──────────────────────────────────────────────────────
@@ -88,7 +88,7 @@ def productExceptSelf_division(nums: List[int]) -> List[int]:
     for x in nums:
         total *= x
     return [total // x for x in nums]
-
+'''
 
 # ──────────────────────────────────────────────────────
 # Approach 3 : Left Array + Right Array
@@ -143,7 +143,7 @@ def productExceptSelf_optimized(nums: List[int]) -> List[int]:
 
     return result
 
-
+'''
 # ──────────────────────────────────────────────────────
 # Approach 5 : Prefix Products + Suffix on the Fly
 # ──────────────────────────────────────────────────────
@@ -167,7 +167,7 @@ def productExceptSelf_prefix_then_suffix(nums: List[int]) -> List[int]:
         suffix *= nums[i]
 
     return left
-
+'''
 
 # ──────────────────────────────────────────────────────
 # ★ Quick comparison summary
@@ -198,10 +198,10 @@ if __name__ == "__main__":
 
     solutions = [
         ("1. Brute Force",           productExceptSelf_brute_force),
-        ("2. Division",              productExceptSelf_division),
+     #  ("2. Division",              productExceptSelf_division),
         ("3. Left + Right Arrays",   productExceptSelf_prefix_suffix),
         ("4. Output + Right Running",productExceptSelf_optimized),
-        ("5. Prefix + Suffix OTF",   productExceptSelf_prefix_then_suffix),
+     #  ("5. Prefix + Suffix OTF",   productExceptSelf_prefix_then_suffix),
     ]
 
     for nums, expected in test_cases:
