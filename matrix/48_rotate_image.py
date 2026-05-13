@@ -50,7 +50,7 @@ Equivalently achieved by:
 from typing import List
 import copy
 
-
+'''
 # ──────────────────────────────────────────────────────
 # Approach 1 : Extra Space
 # ──────────────────────────────────────────────────────
@@ -66,7 +66,7 @@ def rotate_extra_space(matrix: List[List[int]]) -> None:
     for i in range(n):
         for j in range(n):
             matrix[j][n - 1 - i] = old[i][j]
-
+'''
 
 # ──────────────────────────────────────────────────────
 # Approach 2 : Transpose + Reverse Each Row  ★ CLASSIC ★
@@ -145,7 +145,7 @@ def rotate_cyclic_swap(matrix: List[List[int]]) -> None:
             matrix[last][last - offset] = matrix[i][last]               # right → bottom
             matrix[i][last]            = top                            # top → right
 
-
+'''
 # ──────────────────────────────────────────────────────
 # Approach 5 : Pythonic One-Liner (zip trick)
 # ──────────────────────────────────────────────────────
@@ -159,7 +159,7 @@ def rotate_cyclic_swap(matrix: List[List[int]]) -> None:
 # ──────────────────────────────────────────────────────
 def rotate_zip(matrix: List[List[int]]) -> None:
     matrix[:] = [list(row) for row in zip(*matrix[::-1])]
-
+'''
 
 # ──────────────────────────────────────────────────────
 # ★ Quick comparison summary
@@ -207,11 +207,11 @@ if __name__ == "__main__":
     ]
 
     solutions = [
-        ("1. Extra Space",              rotate_extra_space),
+     #    ("1. Extra Space",              rotate_extra_space),
         ("2. Transpose + Reverse Rows", rotate_transpose_reverse),
         ("3. Flip + Transpose",         rotate_flip_transpose),
         ("4. Four-Way Cyclic Swap",     rotate_cyclic_swap),
-        ("5. Pythonic zip trick",       rotate_zip),
+     #   ("5. Pythonic zip trick",       rotate_zip),
     ]
 
     for matrix_in, expected in test_cases:
