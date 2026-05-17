@@ -30,16 +30,21 @@ def searchMatrix_brute(matrix: List[List[int]], target: int) -> bool:
 # Space: O(1)
 # ─────────────────────────────────────────────
 def searchMatrix_binary(matrix: List[List[int]], target: int) -> bool:
-    import bisect
     for row in matrix:
-        idx = bisect.bisect_left(row, target)
-        if idx < len(row) and row[idx] == target:
-            return True
+        left, right = 0, len(row) - 1
+        while left <= right:
+            mid = (left + right) // 2
+            if row[mid] == target:
+                return True
+            elif row[mid] < target:
+                left = mid + 1
+            else:
+                right = mid - 1
     return False
 
 
 # ─────────────────────────────────────────────
-# Approach 3: Staircase Search (Top-Right Corner)
+# Approach 3: Staircase Search (Top-Right Corner) OPTIMAL
 # Time:  O(m + n)
 # Space: O(1)
 #
@@ -60,7 +65,7 @@ def searchMatrix_staircase(matrix: List[List[int]], target: int) -> bool:
 
     return False
 
-
+'''
 # ─────────────────────────────────────────────
 # Approach 4: Divide and Conquer
 # Time:  O(n log n)  for square n×n matrix
@@ -92,7 +97,7 @@ def searchMatrix_divide(matrix: List[List[int]], target: int) -> bool:
     if not matrix or not matrix[0]:
         return False
     return search(0, 0, len(matrix) - 1, len(matrix[0]) - 1)
-
+'''
 
 # ─────────────────────────────────────────────
 # OPTIMAL — Approach 3 (Staircase Search)
@@ -128,7 +133,7 @@ if __name__ == "__main__":
         ("Brute Force",       searchMatrix_brute),
         ("Binary Search",     searchMatrix_binary),
         ("Staircase",         searchMatrix_staircase),
-        ("Divide & Conquer",  searchMatrix_divide),
+     #  ("Divide & Conquer",  searchMatrix_divide),
     ]
 
     for mat, target, expected in tests:
