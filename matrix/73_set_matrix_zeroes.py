@@ -85,11 +85,10 @@ def setZeroes_inplace(matrix: List[List[int]]) -> None:
         for row in range(rows):
             matrix[row][0] = 0
 
-
 # ─────────────────────────────────────────────
 # Approach 4: Boolean Grid (full extra space)
 # Time:  O(m * n)
-# Space: O(m * n)  — two boolean grids
+# Space: O(m + n)  — two boolean arrays
 # ─────────────────────────────────────────────
 def setZeroes_bool_grid(matrix: List[List[int]]) -> None:
     rows, cols = len(matrix), len(matrix[0])
@@ -109,7 +108,7 @@ def setZeroes_bool_grid(matrix: List[List[int]]) -> None:
 
 
 # ─────────────────────────────────────────────
-# OPTIMAL — Approach 2 (In-place First Row/Col)
+# OPTIMAL — Approach 3 (In-place First Row/Col)
 # O(m * n) time  |  O(1) extra space
 # ─────────────────────────────────────────────
 setZeroes = setZeroes_inplace
@@ -150,7 +149,7 @@ if __name__ == "__main__":
         ("Brute Force", setZeroes_brute),
         ("Sets",        setZeroes_sets),
         ("In-place",    setZeroes_inplace),
-        ("Bool Grid",   setZeroes_bool_grid),
+     #  ("Bool Grid",   setZeroes_bool_grid),
     ]
 
     for mat, expected in tests:
