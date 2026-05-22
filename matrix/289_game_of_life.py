@@ -117,33 +117,6 @@ def gameOfLife_bitwise(board: List[List[int]]) -> None:
             board[r][c] >>= 1
 
 
-# ─────────────────────────────────────────────
-# Approach 4: Sparse Set (Infinite Grid)
-# Time:  O(L)   — L = number of live cells
-# Space: O(L)   — set of live cell coordinates
-#
-# Only candidates for change are live cells and their neighbors.
-# Scales well for large sparse boards; handles infinite grids.
-# ─────────────────────────────────────────────
-def gameOfLife_sparse(board: List[List[int]]) -> None:
-    rows, cols = len(board), len(board[0])
-    live = {(r, c) for r in range(rows) for c in range(cols) if board[r][c]}
-
-    neighbor_count: dict = {}
-    for r, c in live:
-        for dr, dc in DIRS:
-            nr, nc = r + dr, c + dc
-            if 0 <= nr < rows and 0 <= nc < cols:
-                neighbor_count[(nr, nc)] = neighbor_count.get((nr, nc), 0) + 1
-
-    for r in range(rows):
-        for c in range(cols):
-            n = neighbor_count.get((r, c), 0)
-            if (r, c) in live:
-                board[r][c] = 1 if n in (2, 3) else 0
-            else:
-                board[r][c] = 1 if n == 3 else 0
-
 
 # ─────────────────────────────────────────────
 # OPTIMAL — Approach 2 (In-place Bit Encoding)
