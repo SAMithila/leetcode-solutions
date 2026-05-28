@@ -31,7 +31,7 @@ def lengthOfLongestSubstring_brute(s: str) -> int:
 
 
 # ─────────────────────────────────────────────
-# Approach 2: Sliding Window + Set
+# Approach 2: Sliding Window + Set (Optima)
 # Time:  O(n)
 # Space: O(min(n, m))
 #
