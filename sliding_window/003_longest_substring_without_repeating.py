@@ -75,7 +75,7 @@ def lengthOfLongestSubstring_map(s: str) -> int:
 
     return best
 
-
+'''
 # ─────────────────────────────────────────────
 # Approach 4: Sliding Window + Array (ASCII only)
 # Time:  O(n)
@@ -96,7 +96,7 @@ def lengthOfLongestSubstring_array(s: str) -> int:
         best = max(best, right - left + 1)
 
     return best
-
+'''
 
 # ─────────────────────────────────────────────
 # OPTIMAL — Approach 3 (Sliding Window + HashMap)
