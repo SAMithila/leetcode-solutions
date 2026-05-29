@@ -113,7 +113,7 @@ if __name__ == "__main__":
         ("ABCDE",   4, 5),
         ("A",       0, 1),
         ("AABA",    0, 2),
-        ("KRSCDCSONAJNHLBMDQGIFCPEKPOHQIHLTDIQGEKLRLPPGOOEFKPKR", 4, 7),
+        ("KRSCDCSONAJNHLBMDQGIFCPEKPOHQIHLTDIQGEKLRLPPGOOEFKPKR", 4, 6),
     ]
 
     solvers = [
