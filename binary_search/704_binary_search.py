@@ -80,7 +80,6 @@ def search_recursive(nums: List[int], target: int) -> int:
 
     return binary_search(0, len(nums) - 1)
 
-'''
 # ─────────────────────────────────────────────
 # Approach 4: Built-in bisect
 # Time:  O(log n)
@@ -94,7 +93,6 @@ def search_bisect(nums: List[int], target: int) -> int:
     if idx < len(nums) and nums[idx] == target:
         return idx                           # target exists at that index
     return -1                               # target not in array
-'''
 
 # ─────────────────────────────────────────────
 # OPTIMAL — Approach 2 (Iterative Binary Search)

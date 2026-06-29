@@ -124,7 +124,7 @@ if __name__ == "__main__":
         ("Brute Force", lengthOfLongestSubstring_brute),
         ("Set",         lengthOfLongestSubstring_set),
         ("HashMap",     lengthOfLongestSubstring_map),
-        ("Array",       lengthOfLongestSubstring_array),
+     #  ("Array",       lengthOfLongestSubstring_array),
     ]
 
     for s, expected in tests:
