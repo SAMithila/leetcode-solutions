@@ -70,6 +70,7 @@ def lengthOfLongestSubstring_map(s: str) -> int:
     for right, ch in enumerate(s):
         if ch in last_seen and last_seen[ch] >= left:
             left = last_seen[ch] + 1   # jump past previous occurrence
+        
         last_seen[ch] = right
         best = max(best, right - left + 1)
 
