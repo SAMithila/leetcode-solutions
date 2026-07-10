@@ -40,8 +40,10 @@ def minSubArrayLen_brute(target: int, nums: List[int]) -> int:
 
     for left in range(n):          # try every starting position
         total = 0
+        
         for right in range(left, n):
             total += nums[right]   # expand window to the right
+            
             if total >= target:
                 best = min(best, right - left + 1)  # valid window — record length
                 break   # longer window from same left = worse answer
