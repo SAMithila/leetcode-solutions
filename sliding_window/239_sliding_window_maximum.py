@@ -82,32 +82,54 @@ def maxSlidingWindow_heap(nums: list[int], k: int) -> list[int]:
 # Time:  O(N) — each index is pushed and popped from the deque at most once
 # Space: O(k) — deque size is capped at window size k
 # ─────────────────────────────────────────────
+
 def maxSlidingWindow_deque(nums: list[int], k: int) -> list[int]:
     if not nums or k == 0:
         return []
-    
-    q = deque()  # stores indices of elements in the current window
+
+    q = deque()      # stores indices of elements in the current window
     res = []
-    
+
     for i in range(len(nums)):
-        # 1. Remove indices that are out of the current window boundary
-        if q and q[0] < i - k + 1:
+        # Step 1: Kick out old index if it left the window
+        if q and q[0] < i - k + 1:   
             q.popleft()
-            
-        # 2. Maintain monotonic property: remove elements from the back of the deque
-        #    that are less than or equal to the current element nums[i].
-        #    These elements can never be the maximum in the current or future windows.
+
+        # Step 2: Throw away smaller numbers from the back
         while q and nums[q[-1]] <= nums[i]:
             q.pop()
-            
-        # 3. Add the current element's index
+
+        # Step 3: Add current index to back
         q.append(i)
-        
-        # 4. Once we have a full window of size k, the front of the deque is the maximum
+
+        # Step 4: Once window is full, save the max
         if i >= k - 1:
             res.append(nums[q[0]])
-            
-    return res
+
+    return res    
+
+# ─────────────────────────────────────────────
+# Dry Run — maxSlidingWindow_deque([1, 3, -1, -3, 5, 3, 6, 7], k=3)
+# q holds indices, kept in decreasing order of nums[index]
+#
+#   i  nums[i]  action                                   q (indices)   res
+#   0    1      push 0                                   [0]           -
+#   1    3      pop 0 (1<=3), push 1                      [1]           -
+#   2   -1      push 2                                    [1,2]         [3]
+#   3   -3      push 3                                    [1,2,3]       [3,3]
+#   4    5      idx1 expired, pop 3,2 (-3<=5, -1<=5)      [4]           [3,3,5]
+#              push 4
+#   5    3      push 5                                    [4,5]         [3,3,5,5]
+#   6    6      idx4 not expired; pop 5,4 (3<=6, 5<=6)    [6]           [3,3,5,5,6]
+#              push 6
+#   7    7      idx6 not expired; pop 6 (6<=7), push 7    [7]           [3,3,5,5,6,7]
+#
+# Front of the deque (q[0]) is always the max of the current window,
+# since expired indices are dropped from the left (step 1) and any
+# index whose value is <= the incoming value is dropped from the
+# right (step 2) — it can never win while the larger, later value
+# is still in play.
+# ─────────────────────────────────────────────
 
 '''
 # ─────────────────────────────────────────────

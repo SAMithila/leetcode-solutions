@@ -42,6 +42,27 @@ def checkInclusion_brute(s1: str, s2: str) -> bool:
 #
 # Same idea as arrays but cleaner — dicts only hold distinct chars.
 # Delete a key when its count hits 0 so equality check is accurate.
+#
+# DRY RUN:
+#   s1 = "ab", s2 = "eidbaooo"
+#   len(s1) = 2, s1_count = {'a': 1, 'b': 1}
+#
+#   Initial window s2[0:2] = "ei":
+#     window_count = {'e': 1, 'i': 1}
+#     {'e': 1, 'i': 1} == {'a': 1, 'b': 1} → False
+#
+#   Slide window (i from 2 to 7):
+#     i=2 ('d'): add 'd', remove s2[0] ('e')
+#       window = "id" → window_count = {'i': 1, 'd': 1}
+#       matches s1_count? False
+#
+#     i=3 ('b'): add 'b', remove s2[1] ('i')
+#       window = "db" → window_count = {'d': 1, 'b': 1}
+#       matches s1_count? False
+#
+#     i=4 ('a'): add 'a', remove s2[2] ('d')
+#       window = "ba" → window_count = {'b': 1, 'a': 1}
+#       matches s1_count? True → Return True ("ba" is a permutation of "ab")
 # ─────────────────────────────────────────────
 def checkInclusion_freq(s1: str, s2: str) -> bool:
     if len(s1) > len(s2):
